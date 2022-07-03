@@ -8,8 +8,8 @@ inputs:
   github_token:
     description: 'Personal access token with admin rights granted.'
     required: true
-  issue_id:
-    description: 'Issue Id to delete'
+  issue_node_id:
+    description: 'Issue NodeId to delete'
     required: true
 runs:
   using: 'node16'
