@@ -8,14 +8,11 @@ async function run(): Promise<void> {
 
     const octokit = github.getOctokit(token)
 
-    await octokit.request(
-      'DELETE /repos/{owner}/{repo}/issues/{issue_number}',
-      {
-        owner: github.context.repo.owner,
-        repo: github.context.repo.repo,
-        issue_number: issueNumber
-      }
-    )
+    await octokit.rest.issues.lock({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      issue_number: issueNumber
+    })
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
