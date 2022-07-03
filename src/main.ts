@@ -4,7 +4,7 @@ import * as github from '@actions/github'
 async function run(): Promise<void> {
   try {
     const token: string = core.getInput('github_token')
-    const issueNodeId: number = parseInt(core.getInput('issue_node_id'))
+    const issueNodeId: string = core.getInput('issue_node_id')
 
     const octokit = github.getOctokit(token)
 
