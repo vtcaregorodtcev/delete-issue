@@ -45,13 +45,13 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const token = core.getInput('github_token');
-            const issueNumber = parseInt(core.getInput('issue_number'));
+            const issueId = parseInt(core.getInput('issue_id'));
             const octokit = github.getOctokit(token);
-            yield octokit.rest.issues.lock({
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
-                issue_number: issueNumber
-            });
+            yield octokit.graphql(`
+      mutation {
+        deleteIssue(input: { issueId: ${issueId}, clientMutationId: ${issueId} }) { ... }
+      }
+    `);
         }
         catch (error) {
             // eslint-disable-next-line no-console

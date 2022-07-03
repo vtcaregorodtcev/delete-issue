@@ -6,10 +6,10 @@ branding:
   color: black
 inputs:
   github_token:
-    description: 'Personal access token that with `repo`, `org:read` and `org:write` are granted.'
+    description: 'Personal access token with admin rights granted.'
     required: true
-  issue_number:
-    description: 'Issue to delete'
+  issue_id:
+    description: 'Issue Id to delete'
     required: true
 runs:
   using: 'node16'
