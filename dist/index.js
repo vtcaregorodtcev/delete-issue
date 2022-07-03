@@ -45,7 +45,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const token = core.getInput('github_token');
-            const issueNodeId = parseInt(core.getInput('issue_node_id'));
+            const issueNodeId = core.getInput('issue_node_id');
             const octokit = github.getOctokit(token);
             yield octokit.graphql(`mutation {
       deleteIssue(input: {issueId: "${issueNodeId}"}) {
