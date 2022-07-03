@@ -33,6 +33,7 @@ jobs:
 
       - name: Rebuild the dist/ directory
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm run build
           npm run package
 
