@@ -47,7 +47,7 @@ function run() {
             const token = core.getInput('github_token');
             const issueNumber = parseInt(core.getInput('issue_number'));
             const octokit = github.getOctokit(token);
-            yield octokit.request('DELETE /repos/{owner}/{repo}/issues/{issue_number}', {
+            yield octokit.rest.issues.lock({
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
                 issue_number: issueNumber
