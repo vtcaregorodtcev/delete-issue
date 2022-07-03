@@ -1,6 +1,9 @@
 name: 'Delete-Issue'
 description: 'The Github action allowing you to delete issues from the repo'
 author: 'vtcaregorodtcev'
+branding:
+  icon: delete
+  color: black
 inputs:
   github_token:
     description: 'Personal access token that with `repo`, `org:read` and `org:write` are granted.'
