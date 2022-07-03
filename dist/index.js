@@ -54,8 +54,13 @@ function run() {
             });
         }
         catch (error) {
-            if (error instanceof Error)
-                core.setFailed(error.message);
+            // eslint-disable-next-line no-console
+            console.error(error);
+            // @ts-ignore
+            // eslint-disable-next-line no-console
+            console.error(error.stack);
+            // @ts-ignore
+            core.setFailed(error.message);
         }
     });
 }
