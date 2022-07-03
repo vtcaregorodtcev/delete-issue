@@ -1,11 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Delete-Issue'
+description: 'The Github action allowing you to delete issues from the repo'
+author: 'vtcaregorodtcev'
 inputs:
-  milliseconds: # change this
+  github_token:
+    description: 'The GitHub token used to create an authenticated client'
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  issue_number:
+    description: 'Issue to delete'
+    required: true
 runs:
-  using: 'node16'
+  using: 'node18'
   main: 'dist/index.js'

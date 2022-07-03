@@ -1,16 +1,21 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as github from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const token: string = core.getInput('github_token')
+    const issueNumber: number = parseInt(core.getInput('issue_number'))
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const octokit = github.getOctokit(token)
 
-    core.setOutput('time', new Date().toTimeString())
+    await octokit.request(
+      'DELETE /repos/{owner}/{repo}/issues/{issue_number}',
+      {
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        issue_number: issueNumber
+      }
+    )
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
