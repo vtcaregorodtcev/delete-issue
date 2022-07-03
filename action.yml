@@ -3,7 +3,7 @@ description: 'The Github action allowing you to delete issues from the repo'
 author: 'vtcaregorodtcev'
 inputs:
   github_token:
-    description: 'The GitHub token used to create an authenticated client'
+    description: 'Personal access token that with `repo`, `org:read` and `org:write` are granted.'
     required: true
   issue_number:
     description: 'Issue to delete'

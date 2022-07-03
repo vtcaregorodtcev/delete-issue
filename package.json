@@ -4,6 +4,9 @@
   "private": true,
   "description": "The Github action allowing you to delete issues from the repo",
   "main": "lib/main.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
@@ -11,7 +14,7 @@
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "export NODE_OPTIONS=--openssl-legacy-provider && npm run build && npm run format && npm run lint && npm run package && npm test"
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
   "repository": {
     "type": "git",
